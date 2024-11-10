@@ -64,22 +64,25 @@ export default function Home() {
   };
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center p-4 sm:p-8">
       {/* URL Shortening Form */}
-      <form onSubmit={handleSubmit} className="mb-4">
+      <form onSubmit={handleSubmit} className="mb-4 flex flex-col sm:flex-row w-full max-w-md">
         <input
           type="text"
           value={url}
           onChange={(e) => setUrl(e.target.value)}
           placeholder="Enter long URL"
-          className="border p-2 rounded mr-2"
+          className="border p-2 rounded mb-2 sm:mb-0 sm:mr-2 flex-grow"
           required
         />
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">
+        <button
+  type="submit"
+  className="bg-blue-500 text-white text-sm p-1 rounded w-2/3 sm:w-auto sm:p-2 sm:text-base mx-auto"
+>
           Shorten URL
         </button>
       </form>
-
+  
       {/* Display Shortened URL */}
       {shortUrl && (
         <div className="mt-4 p-4 border rounded shadow-md bg-white w-full max-w-md">
@@ -89,7 +92,7 @@ export default function Home() {
               href={shortUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-blue-600 underline"
+              className="text-blue-600 underline break-all"
             >
               {shortUrl}
             </a>
@@ -100,66 +103,13 @@ export default function Home() {
           </div>
           <button
             onClick={copyToClipboard}
-            className="bg-green-500 text-white p-2 rounded mt-2"
+            className="bg-green-500 text-white p-2 rounded mt-2 w-full sm:w-auto"
           >
             Copy Link
           </button>
         </div>
       )}
-
-     
-      {/* <button
-        onClick={() => setShowTable((prev) => !prev)}
-        className="bg-yellow-500 text-white p-2 rounded mt-4"
-      >
-        {showTable ? "Hide URL Links" : "Show URL Links"}
-      </button>
-
-      {showTable && (
-        <div className="mt-8 w-full max-w-2xl">
-          <h2 className="text-2xl font-bold text-center mb-4">URL Database</h2>
-          {urls.length === 0 ? (
-            <p className="text-center text-lg">No data found</p> // Message when no URLs are available
-          ) : (
-            <table className="w-full border-collapse bg-white shadow-md rounded">
-              <thead>
-                <tr>
-                  <th className="border p-2">Long URL</th>
-                  <th className="border p-2">Short URL</th>
-                  <th className="border p-2">Short Code</th>
-                  <th className="border p-2">Actions</th>
-                </tr>
-              </thead>
-              <tbody>
-                {urls.map((url) => (
-                  <tr key={url.shortCode}>
-                    <td className="border p-2 truncate max-w-xs">{url.longUrl}</td>
-                    <td className="border p-2">
-                      <a
-                        href={url.shortUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="text-blue-600 underline"
-                      >
-                        {url.shortUrl}
-                      </a>
-                    </td>
-                    <td className="border p-2">{url.shortCode}</td>
-                    <td className="border p-2 text-center">
-                      <button
-                        onClick={() => handleDelete(url.shortCode)}
-                        className="bg-red-500 text-white p-2 rounded"
-                      >
-                        Delete
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          )}
-        </div>
-      )} */}
     </div>
   );
+  
 }

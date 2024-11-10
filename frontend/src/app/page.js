@@ -14,7 +14,7 @@ export default function Home() {
   useEffect(() => {
     async function fetchUrls() {
       try {
-        const response = await axios.get("http://localhost:5000/urls");
+        const response = await axios.get("https://url-shortener-backend-mo4f.onrender.com/urls");
         setUrls(response.data);
       } catch (error) {
         console.error("Error fetching URLs:", error.message);
@@ -27,7 +27,7 @@ export default function Home() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`http://localhost:5000/shorten`, { longUrl: url });
+      const response = await axios.post(`https://url-shortener-backend-mo4f.onrender.com/shorten`, { longUrl: url });
       if (response.data.shortUrl && response.data.shortCode) {
         setShortUrl(response.data.shortUrl);
         setShortCode(response.data.shortCode);

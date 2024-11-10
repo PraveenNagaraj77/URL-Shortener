@@ -47,7 +47,7 @@ export default function Home() {
   // Handle URL deletion
   const handleDelete = async (shortCode) => {
     try {
-      await axios.delete(`http://localhost:5000/${shortCode}`);
+      await axios.delete(`https://url-shortener-backend-mo4f.onrender.com/${shortCode}`);
       setUrls((prevUrls) => prevUrls.filter((url) => url.shortCode !== shortCode));
     } catch (error) {
       console.error("Error deleting URL:", error.message);
